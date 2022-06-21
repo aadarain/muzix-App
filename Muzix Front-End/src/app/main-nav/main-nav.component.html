@@ -1,0 +1,71 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>
+        <mat-toolbar>
+        Hello, {{name}}
+        <span class="material-icons edit" routerLink="/profile">
+          edit
+          </span>
+      </mat-toolbar>
+</mat-toolbar >
+<mat-divider></mat-divider>
+    <mat-nav-list>
+      <a mat-list-item class="nav1" routerLink="/favourites">Your Favourite Songs
+        <span class="material-icons deeppurple" > favorite</span>   
+      </a><br>
+      <a mat-list-item class="nav2" routerLink="/recommend">Recommended Songs
+        <span class="material-icons deeppurple">recommend</span>
+    </a> <br>
+      <a mat-list-item class="nav2" routerLink="/country">Country Special Songs
+        <span class="material-icons deeppurple">grade</span>
+    </a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+    <div class="divif" *ngIf="isLoggedin; else elseBlock">
+      <mat-toolbar-row color="primary" style="margin-top: -70px; font-size: 10px;">
+        <span class="material-icons home myDIV" style="float: right;height: 5px;" (click)="cleardata()" routerLink="/home"> logout</span>
+        <div class="hide" style="float: right; height: 10px;" routerLink="/home" (click)="cleardata()" ><b>Logout</b></div>
+      </mat-toolbar-row>
+
+    </div>
+    <ng-template #elseBlock>
+
+      <mat-toolbar-row color="primary" style="margin-top: -50px;">
+       
+        <span class="material-icons home myDIV" style="float: right;"  routerLink="/home"> login</span>
+        <div class="hide" style="float: right;" routerLink="/home" ><b> &nbsp; Login</b></div>
+        
+    </mat-toolbar-row>
+
+     
+    </ng-template>
+      
+      
+      
+      <mat-toolbar color="primary" style="margin-top: -12px;">
+        <span routerLink="" class="musix">Muzix App</span>
+        <span class="example-spacer"></span>
+        <mat-icon class="material-icons home" aria-hidden="true" routerLink="">
+          home
+        </mat-icon>
+      </mat-toolbar>   
+      
+    </mat-toolbar>
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

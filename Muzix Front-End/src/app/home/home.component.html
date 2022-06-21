@@ -1,0 +1,154 @@
+<div class="whole" >
+  
+  <div class="type">
+  <div class="typewriter">
+    <h1>Welcome to Muzix Application</h1>
+ 
+  </div>
+  </div>
+  
+  <div class="homebuttons" >
+  <button class="but1" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+  <button class="but2" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+    <br>
+    <br>
+  <button class="but3" style="width:auto;" routerLink="/dashboard">Guest Login..</button>
+    </div>
+  
+  <div id="id01" class="modal">
+    <form class="modal-content animate"  [formGroup] ="loginForm" (ngSubmit)="signIn()">
+      
+      <div class="imgcontainer">
+          <h3 class="text-center text-info" style="align-items: center;">Login</h3>
+         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+      <div style="align-items: center;">
+          <label for="username">Email-Id</label>
+          <input type="text" placeholder="Enter Your Email-Id" class="Email-Id" formControlName="username" >
+          <small *ngIf="username.invalid && (username.dirty || username.touched)">
+              Username is a Mandatory Field
+          </small>
+  
+      </div>
+  <div style="align-items: center;">
+          <label for="password">Password</label>
+          <input type="password" placeholder="Enter Password" class="password" formControlName="password">
+          <small *ngIf="password.invalid && (password.dirty || password.touched)">
+              <small *ngIf="password.errors.required">
+                  password can not be left blank
+              </small>
+              <small *ngIf="password.errors.minlength">
+                  password should have atleast 8 characters
+              </small>
+          </small>
+      </div>
+      <div style="align-items: center;">
+          <!--<button value="Sign In">Sign In</button>-->
+          <input class="submit"  type="submit" [disabled]="!loginForm.valid" value="Sign In">
+      </div>
+   
+  </form>
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  </script>
+  
+  
+  <div id="id02" class="modal1">
+    <form class="modal-content animate" [formGroup] ="registerForm" >
+      
+      <div class="imgcontainer">
+        <h1 style="align-items: center;">Register User</h1>
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+  
+   
+      <div style="align-items: center;">
+        <label for="name">Name</label>
+        <input type="text" placeholder="Enter Your name" formControlName="name">
+        <!--dirty-- means writing data and then removing, touched-came in focus, invaid- refersto no data-->
+        <small *ngIf="name.invalid && (name.dirty || name.touched)">
+            Name is not valid
+        </small>
+  
+    </div>
+  
+  
+      <div style="align-items: center;">
+          <label for="email">Email-Id</label>
+          <input type="text" placeholder="Enter Your Email-Id" formControlName="email">
+          <!--dirty-- means writing data and then removing, touched-came in focus, invaid- refersto no data-->
+          <small *ngIf="email.invalid && (email.dirty || email.touched)">
+              Email-Id is not valid
+          </small>
+  
+      </div>
+      <div style="align-items: center;">
+          <label for="password">Password</label>
+          <input type="password" placeholder="Enter Password" formControlName="pass">
+          <small *ngIf="pass.invalid && (pass.dirty || pass.touched)">
+              <small *ngIf="pass.errors.required">
+                  password can not be left blank
+              </small>
+              <small *ngIf="pass.errors.minlength">
+                  password should have atleast 8 characters
+              </small>
+          </small>
+      </div>
+      <div style="align-items: center;">
+        <label for="confpass">Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" formControlName="confpass">
+        <small *ngIf="confpass.invalid && (confpass.dirty || confpass.touched)">
+            <small *ngIf="confpass.errors.required">
+                password can not be left blank
+            </small>
+            <small *ngIf="confpass.errors.minlength">
+                password should have atleast 8 characters
+            </small>
+        </small>
+    </div>
+    <div>
+        <small *ngIf="matchpass">
+          confirm password is not matching
+      </small>
+    </div>
+      <button mat-raised-button
+        [disabled]="!registerForm.valid"
+        color="primary"
+        (click)="register()"
+        onclick="document.getElementById('id02').style.display='none'">
+        {{buttionText}}
+      </button>
+      <br>
+     
+   
+  </form>
+  
+  
+  </div>
+  
+  <script>
+  // Get the modal
+  var modal1 = document.getElementById('id02');
+  
+  // When the user clicks anywhere outside of the modal1, close it
+  window.onclick = function(event) {
+    if (event.target == modal1) {
+      modal1.style.display = "none";
+    }
+  }
+  </script>
+
+
+
+  </div>
+  

@@ -1,0 +1,40 @@
+<app-main-nav>
+    <form #userupdateform="ngForm" class="update" [formGroup] ="updateform" (ngSubmit)="update()">
+      
+        <div class="header">
+          <h1 style="align-items: center;">Update User</h1>
+        
+      </div>
+       
+    
+        <div style="align-items: center;">
+            <label for="email">Email-Id</label><br>
+            <input type="text" placeholder="Enter Your Email-Id" formControlName="email">
+            <!--dirty-- means writing data and then removing, touched-came in focus, invaid- refersto no data-->
+            <small *ngIf="email.invalid && (email.dirty || email.touched)">
+                Email-Id is not valid
+            </small>
+    
+        </div>
+        <br>
+        <div style="align-items: center;">
+            <label for="password">Password</label><br>
+            <input type="password" placeholder="Enter Password" formControlName="pass">
+            <small *ngIf="pass.invalid && (pass.dirty || pass.touched)">
+                <small *ngIf="pass.errors.required">
+                    password can not be left blank
+                </small>
+                <small *ngIf="pass.errors.minlength">
+                    password should have atleast 8 characters
+                </small>
+            </small>
+        </div>
+        <br>
+        <button mat-raised-button color="primary" type="submit">
+         Update
+        </button>
+        <br>
+        <small [hidden]="!userupdateform.submitted">Updated info </small>
+     
+    </form>
+</app-main-nav>
